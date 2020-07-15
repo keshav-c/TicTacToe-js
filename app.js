@@ -1,5 +1,5 @@
 const board = ((() => {
-  let state = ['X', 'U', 'X', 'U', 'X', 'U', 'O', 'U', 'O'];
+  let state = ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
 
   const isPositionEmpty = (index) => state[index] !== 'X' && state[index] !== 'O';
 
@@ -58,8 +58,11 @@ const controller = ((() => {
 
 controller.fillBoard();
 
-// const gameBoard = document.querySelector('#board-container');
-// gameBoard.addEventListener('click', event => {
-//   const element = event.target;
-//   console.log(target);
-// });
+const gameBoard = document.querySelector('#board-container');
+gameBoard.addEventListener('click', event => {
+  const element = event.target.closest('div');
+  const col = parseInt(element.classList[1].match(/\d/)[0], 10) - 1;
+  const row = parseInt(element.parentElement.classList[1].match(/\d/)[0], 10) - 1;
+  board.update(row, col);
+  controller.fillBoard();
+});
