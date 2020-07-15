@@ -18,6 +18,22 @@ const board = ((() => {
     return symbol;
   };
 
+  const win = (board) => {
+    if row1 = 
+    })
+  };
+  row1 = [0,1,2]
+  row2 = [3,4,5]
+  row3 = [6,7,8]
+  col1 = [0, 3, 6]
+  col2 = [1, 4, 7]
+  col3 = [2, 5, 8]
+  diagonal1 = [0,4,8]
+  diagonal2 = [2,4,6]
+  
+
+
+
   const update = (row, col) => {
     const boardIndex = row * 3 + col;
     if (isPositionEmpty(boardIndex)) {
