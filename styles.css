@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.board-container {
+#board-container {
   max-width: 500px;
   display: flex;
   flex-direction: column;
@@ -16,7 +16,6 @@
   border-bottom: 1px solid black;
   display: flex;
   height: 10vh;
-
 }
 
 .row3 {
@@ -27,10 +26,18 @@
   flex-grow: 1;
   display: flex;
   justify-content: center;
+  align-self: center;
   font-size: 3rem;
-  
 }
 
 .col3 {
   border: none;
 }
+
+/* .col span {
+  visibility: hidden;
+}
+
+.row2 .col3 span {
+  visibility: visible;
+} */

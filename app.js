@@ -1,30 +1,65 @@
 const board = ((() => {
-  let state = '_________';
+  let state = ['X', 'U', 'X', 'U', 'X', 'U', 'O', 'U', 'O'];
 
-  const isPositionEmpty = (index) => state.charAt(index) === '_';
+  const isPositionEmpty = (index) => state[index] !== 'X' && state[index] !== 'O';
 
-  const update = (row, col, symbol) => {
+  const nextSymbol = () => {
+    let numX = 0;
+    let numO = 0;
+    state.forEach(symbol => {
+      if (symbol === 'X') {
+        numX += 1;
+      }
+      if (symbol === 'O') {
+        numO += 1;
+      }
+    });
+    const symbol = numX <= numO ? 'X' : 'O';
+    return symbol;
+  };
+
+  const update = (row, col) => {
     const boardIndex = row * 3 + col;
     if (isPositionEmpty(boardIndex)) {
-      if (boardIndex === 0) {
-        state = symbol.concat(state.slice(1, 9));
-      } else if (boardIndex === 8) {
-        state = state.slice(0, 8)
-          .concat(symbol);
+      state = state
+        .slice(0, boardIndex)
+        .concat(nextSymbol())
+        .concat(state.slice(boardIndex + 1, 9));
+    }
+  };
+
+
+  const getState = () => state;
+
+  return { getState, update, nextSymbol };
+})());
+
+const controller = ((() => {
+  const fillBoard = () => {
+    let row = 0;
+    let col = 0;
+    for (let i = 0; i < 9; i += 1) {
+      row = Math.floor(i / 3) + 1;
+      col = (i % 3) + 1;
+      const query = `.row${row} .col${col} span`;
+      const cell = document.querySelector(query);
+      const currentSymbol = board.getState()[i];
+      cell.textContent = currentSymbol;
+      if (currentSymbol === 'X' || currentSymbol === 'O') {
+        cell.style.visibility = 'visible';
       } else {
-        state = state
-          .slice(0, boardIndex)
-          .concat(symbol)
-          .concat(state.slice(boardIndex + 1, -1));
+        cell.style.visibility = 'hidden';
       }
     }
   };
 
-  const getState = () => state.slice(0, 3)
-    .concat(';')
-    .concat(state.slice(3, 6))
-    .concat(';')
-    .concat(state.slice(6, 9));
-
-  return { getState, update };
+  return { fillBoard };
 })());
+
+controller.fillBoard();
+
+// const gameBoard = document.querySelector('#board-container');
+// gameBoard.addEventListener('click', event => {
+//   const element = event.target;
+//   console.log(target);
+// });
