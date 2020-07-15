@@ -1,23 +1,30 @@
-const board = (() => {
-  const state = '_________';
+const board = ((() => {
+  let state = '_________';
 
-  const isPositionEmpty = function(index) {
-    return state.charAt(index) === '_';
-  };
+  const isPositionEmpty = (index) => state.charAt(index) === '_';
 
-  const update = function(row, col, symbol) {
+  const update = (row, col, symbol) => {
     const boardIndex = row * 3 + col;
-    if (this.isPositionEmpty(boardIndex)) {
+    if (isPositionEmpty(boardIndex)) {
       if (boardIndex === 0) {
-        this.state = symbol.concat(this.state.slice(1, 9));
+        state = symbol.concat(state.slice(1, 9));
       } else if (boardIndex === 8) {
-        this.state = this.state.slice(0,8).concat(symbol);
+        state = state.slice(0, 8)
+          .concat(symbol);
       } else {
-        this.state = this.state.slice(0, boardIndex).concat(symbol).concat(boardIndex + 1, -1);
+        state = state
+          .slice(0, boardIndex)
+          .concat(symbol)
+          .concat(state.slice(boardIndex + 1, -1));
       }
     }
-  }
+  };
 
-  return { update };
+  const getState = () => state.slice(0, 3)
+    .concat(';')
+    .concat(state.slice(3, 6))
+    .concat(';')
+    .concat(state.slice(6, 9));
 
-} () );
+  return { getState, update };
+})());
