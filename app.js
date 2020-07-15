@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 const board = ((() => {
   let state = ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
 
@@ -18,21 +19,62 @@ const board = ((() => {
     return symbol;
   };
 
-  const win = (board) => {
-    if row1 = 
-    })
+  const getRowWinner = () => {
+    let winner = -1;
+    if (state[0] === state[1] && state[1] === state[2] && state[0] !== '_') {
+      winner = 0;
+    } else if (state[3] === state[4] && state[4] === state[5] && state[3] !== '_') {
+      winner = 3;
+    } else if (state[6] === state[7] && state[7] === state[8] && state[6] !== '_') {
+      winner = 6;
+    }
+    return winner;
   };
-  row1 = [0,1,2]
-  row2 = [3,4,5]
-  row3 = [6,7,8]
-  col1 = [0, 3, 6]
-  col2 = [1, 4, 7]
-  col3 = [2, 5, 8]
-  diagonal1 = [0,4,8]
-  diagonal2 = [2,4,6]
-  
 
+  const getColumnWinner = () => {
+    let winner = -1;
+    if (state[0] === state[3] && state[3] === state[6] && state[0] !== '_') {
+      winner = 0;
+    } else if (state[1] === state[4] && state[4] === state[7] && state[1] !== '_') {
+      winner = 1;
+    } else if (state[2] === state[5] && state[5] === state[8] && state[2] !== '_') {
+      winner = 2;
+    }
+    return winner;
+  };
 
+  const getDiagonalWinner = () => {
+    let winner = -1;
+    if (state[0] === state[4] && state[4] === state[8] && state[0] !== '_') {
+      winner = 0;
+    } else if (state[2] === state[4] && state[4] === state[6] && state[2] !== '_') {
+      winner = 2;
+    }
+    return winner;
+  };
+
+  const getWinner = () => {
+    const rw = getRowWinner();
+    if (rw >= 0) {
+      console.log(`${state[rw]} won`);
+      return;
+    }
+    const cw = getColumnWinner();
+    if (cw >= 0) {
+      console.log(`${state[cw]} won`);
+      return;
+    }
+    const dw = getDiagonalWinner();
+    if (dw >= 0) {
+      console.log(`${state[dw]} won`);
+      return;
+    }
+    if (state.indexOf('_') > -1) {
+      console.log('Game ongoing');
+      return;
+    }
+    console.log('Draw');
+  };
 
   const update = (row, col) => {
     const boardIndex = row * 3 + col;
@@ -44,10 +86,9 @@ const board = ((() => {
     }
   };
 
-
   const getState = () => state;
 
-  return { getState, update, nextSymbol };
+  return { getState, update, nextSymbol, getWinner };
 })());
 
 const controller = ((() => {
@@ -81,4 +122,5 @@ gameBoard.addEventListener('click', event => {
   const row = parseInt(element.parentElement.classList[1].match(/\d/)[0], 10) - 1;
   board.update(row, col);
   controller.fillBoard();
+  board.getWinner();
 });
