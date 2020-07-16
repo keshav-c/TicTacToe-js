@@ -106,11 +106,23 @@ const controller = ((() => {
       const cell = document.querySelector(query);
       const currentSymbol = board.getState()[i];
       cell.textContent = currentSymbol;
+      cell.style.color = 'black';
       if (currentSymbol === 'X' || currentSymbol === 'O') {
         cell.style.visibility = 'visible';
       } else {
         cell.style.visibility = 'hidden';
       }
+    }
+  };
+
+  const highlightWinningCells = () => {
+    if (winner === 'X' || winner === 'O') {
+      winningSequence.forEach(cellNumber => {
+        const row = Math.floor(cellNumber / 3) + 1;
+        const col = (cellNumber % 3) + 1;
+        const cell = document.querySelector(`.r${row}c${col} span`);
+        cell.style.color = 'green';
+      });
     }
   };
 
@@ -132,14 +144,14 @@ const controller = ((() => {
   const getWinningSequence = () => winningSequence;
 
   return {
-    fillBoard, isGameOver, getWinner, getWinningSequence,
+    fillBoard, isGameOver, getWinner, getWinningSequence, highlightWinningCells,
   };
 })());
 
 controller.fillBoard();
-
 const gameBoard = document.querySelector('#board-container');
-gameBoard.addEventListener('click', event => {
+
+const nextMove = (event) => {
   const element = event.target.closest('div');
   let row;
   let col;
@@ -155,8 +167,13 @@ gameBoard.addEventListener('click', event => {
     if (winner === 'D') {
       resultMessage.textContent = 'Draw';
     } else {
+      controller.highlightWinningCells();
       resultMessage.textContent = `${winner} won the game!`;
     }
     resultBox.appendChild(resultMessage);
+    gameBoard.removeEventListener('click', nextMove);
   }
-});
+};
+
+
+gameBoard.addEventListener('click', nextMove);
