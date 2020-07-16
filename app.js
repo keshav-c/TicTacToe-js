@@ -98,7 +98,7 @@ const controller = ((() => {
     for (let i = 0; i < 9; i += 1) {
       row = Math.floor(i / 3) + 1;
       col = (i % 3) + 1;
-      const query = `.row${row} .col${col} span`;
+      const query = `.r${row}c${col} span`;
       const cell = document.querySelector(query);
       const currentSymbol = board.getState()[i];
       cell.textContent = currentSymbol;
@@ -118,8 +118,11 @@ controller.fillBoard();
 const gameBoard = document.querySelector('#board-container');
 gameBoard.addEventListener('click', event => {
   const element = event.target.closest('div');
-  const col = parseInt(element.classList[1].match(/\d/)[0], 10) - 1;
-  const row = parseInt(element.parentElement.classList[1].match(/\d/)[0], 10) - 1;
+  let row;
+  let col;
+  [row, col] = element.classList[1].match(/\d/g);
+  row = parseInt(row, 10) - 1;
+  col = parseInt(col, 10) - 1;
   board.update(row, col);
   controller.fillBoard();
   board.getWinner();

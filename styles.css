@@ -3,16 +3,41 @@
 *::after {
   box-sizing: border-box;
 }
-
+/* 
 #board-container {
   max-width: 500px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   justify-content: center;
+} */
+
+#board-container {
+  background-color: black;
+  width: 540px;
+  max-width: 600px;
+  height: 360px;
+  max-height: 420px;
+  margin: 0 auto;
+  display: grid;
+  row-gap: 3px;
+  column-gap: 3px;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
-.row {
+.cell {
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+}
+
+.cell span {
+  font-size: 4em;
+  align-self: center;
+}
+
+/* .row {
   border-bottom: 1px solid black;
   display: flex;
   height: 10vh;
@@ -32,7 +57,7 @@
 
 .col3 {
   border: none;
-}
+} */
 
 /* .col span {
   visibility: hidden;
