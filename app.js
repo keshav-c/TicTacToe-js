@@ -96,9 +96,36 @@ const board = ((() => {
   };
 })());
 
+// eslint-disable-next-line no-unused-vars
+const newPlayerInstance = (name, id) => {
+  let score = 0;
+
+  const incrementScore = () => {
+    score += 1;
+  };
+
+  const resetPlayer = (newName) => {
+    name = newName;
+    score = 0;
+  };
+
+  const getScore = () => score;
+  const getName = () => name;
+  const getId = () => id;
+
+  return {
+    incrementScore,
+    resetPlayer,
+    getScore,
+    getName,
+    getId,
+  };
+};
+
 const controller = ((() => {
   let winner;
   let winningSequence;
+  const players = [newPlayerInstance('Player 1', 1), newPlayerInstance('Player 2', 2)];
 
   const fillBoard = () => {
     let row = 0;
@@ -116,6 +143,7 @@ const controller = ((() => {
       } else {
         cell.style.visibility = 'hidden';
       }
+      controller.fillScoreBoard();
     }
   };
 
@@ -144,9 +172,32 @@ const controller = ((() => {
     return finished;
   };
 
-  const updatePlayerName = (name, playerNum) => {
-    const playerNameElement = document.querySelector(`.player${playerNum}-name h3`);
-    playerNameElement.textContent = name;
+  const fillScoreBoard = () => {
+    players.forEach(player => {
+      const playerNameQuery = `.player${player.getId()}-name h3`;
+      const playerNameElement = document.querySelector(playerNameQuery);
+      playerNameElement.textContent = player.getName();
+      const playerScoreQuery = `.player${player.getId()}-score h3`;
+      const playerScoreElement = document.querySelector(playerScoreQuery);
+      playerScoreElement.textContent = player.getScore();
+    });
+  };
+
+  const updateScoreBoard = (winningChar) => {
+    if (winningChar === 'X') {
+      players[0].incrementScore();
+    }
+    if (winningChar === 'O') {
+      players[1].incrementScore();
+    }
+  };
+
+  const changePlayer = (name, playerNum) => {
+    const player = players[playerNum - 1];
+    player.resetPlayer(name);
+    // const playerNameElement = document.querySelector(`.player${playerNum}-name h3`);
+    // playerNameElement.textContent = name;
+    controller.fillScoreBoard();
   };
 
   const getWinner = () => winner;
@@ -158,7 +209,9 @@ const controller = ((() => {
     getWinner,
     getWinningSequence,
     highlightWinningCells,
-    updatePlayerName,
+    changePlayer,
+    fillScoreBoard,
+    updateScoreBoard,
   };
 })());
 
@@ -181,6 +234,8 @@ const nextMove = (event) => {
     const resultBox = document.querySelector('#result');
     const resultMessage = document.createElement('h2');
     const winner = controller.getWinner();
+    controller.updateScoreBoard(winner);
+    controller.fillScoreBoard();
     if (winner === 'D') {
       resultMessage.textContent = 'Draw.';
     } else {
@@ -221,7 +276,7 @@ resetBtn.addEventListener('click', (event) => {
 const scoreboardNameUpdater = (event) => {
   const playerNum = Number(event.target.id.match(/\d/));
   const name = event.target.value;
-  controller.updatePlayerName(name, playerNum);
+  controller.changePlayer(name, playerNum);
 };
 
 const p1Input = document.forms['player-name'].querySelector('#p1');
