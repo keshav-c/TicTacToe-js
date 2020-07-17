@@ -2,6 +2,10 @@
 const board = ((() => {
   let state = ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
 
+  const reset = () => {
+    state = ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
+  };
+
   const isPositionEmpty = (index) => state[index] !== 'X' && state[index] !== 'O';
 
   const nextSymbol = () => {
@@ -88,7 +92,7 @@ const board = ((() => {
   const getState = () => state;
 
   return {
-    getState, update, nextSymbol, getWinner,
+    getState, update, nextSymbol, getWinner, reset,
   };
 })());
 
@@ -150,7 +154,8 @@ const controller = ((() => {
 
 controller.fillBoard();
 const gameBoard = document.querySelector('#board-container');
-
+const newGameBtn = document.querySelector('#newgame');
+const resetBtn = document.querySelector('#reset');
 const nextMove = (event) => {
   const element = event.target.closest('div');
   let row;
@@ -160,8 +165,6 @@ const nextMove = (event) => {
   col = parseInt(col, 10) - 1;
   board.update(row, col);
   controller.fillBoard();
-  const newGameBtn = document.querySelector('#newgame');
-  const resetBtn = document.querySelector('#reset');
   if (controller.isGameOver()) {
     const resultBox = document.querySelector('#result');
     const resultMessage = document.createElement('h2');
@@ -174,13 +177,24 @@ const nextMove = (event) => {
     }
     resultBox.appendChild(resultMessage);
     gameBoard.removeEventListener('click', nextMove);
-    if (winner === 'D' || controller ) {
-      newGameBtn.style.display = 'block';
-    }
+    newGameBtn.style.display = 'block';
     resetBtn.style.display = 'none';
   } else {
     newGameBtn.style.display = 'none';
+    resetBtn.style.display = 'block';
   }
 };
 
 gameBoard.addEventListener('click', nextMove);
+newGameBtn.addEventListener('click', (event) => {
+  board.reset();
+  controller.fillBoard();
+  gameBoard.addEventListener('click', nextMove);
+  const resultBox = document.querySelector('#result');
+  const resultMessage = document.querySelector('#result h2');
+  resultBox.removeChild(resultMessage);
+});
+resetBtn.addEventListener('click', (event) => {
+  board.reset();
+  controller.fillBoard();
+});
