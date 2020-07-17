@@ -144,11 +144,21 @@ const controller = ((() => {
     return finished;
   };
 
+  const updatePlayerName = (name, playerNum) => {
+    const playerNameElement = document.querySelector(`.player${playerNum}-name h3`);
+    playerNameElement.textContent = name;
+  };
+
   const getWinner = () => winner;
   const getWinningSequence = () => winningSequence;
 
   return {
-    fillBoard, isGameOver, getWinner, getWinningSequence, highlightWinningCells,
+    fillBoard,
+    isGameOver,
+    getWinner,
+    getWinningSequence,
+    highlightWinningCells,
+    updatePlayerName,
   };
 })());
 
@@ -207,3 +217,15 @@ resetBtn.addEventListener('click', (event) => {
   board.reset();
   controller.fillBoard();
 });
+
+const scoreboardNameUpdater = (event) => {
+  const playerNum = Number(event.target.id.match(/\d/));
+  const name = event.target.value;
+  controller.updatePlayerName(name, playerNum);
+};
+
+const p1Input = document.forms['player-name'].querySelector('#p1');
+const p2Input = document.forms['player-name'].querySelector('#p2');
+
+p1Input.addEventListener('keyup', scoreboardNameUpdater);
+p2Input.addEventListener('keyup', scoreboardNameUpdater);
