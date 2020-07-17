@@ -1,30 +1,49 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 #board-container {
-  background-color: black;
-  width: 540px;
-  max-width: 600px;
-  height: 360px;
-  max-height: 420px;
-  margin: 0 auto;
-  display: grid;
-  row-gap: 3px;
-  column-gap: 3px;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: repeat(3, 1fr);
+	background-color: black;
+	width: 540px;
+	max-width: 600px;
+	height: 360px;
+	max-height: 420px;
+	margin: 0 auto;
+	display: grid;
+	row-gap: 3px;
+	column-gap: 3px;
+	grid-template-rows: repeat(3, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 }
 
 .cell {
-  background-color: aliceblue;
-  display: flex;
-  justify-content: center;
+	background-color: aliceblue;
+	display: flex;
+	justify-content: center;
 }
 
 .cell span {
-  font-size: 4em;
-  align-self: center;
+	font-size: 4em;
+	align-self: center;
+}
+
+button {
+	font-size: 1.3rem;
+	margin: 0 auto;
+	background-color: rgb(42, 240, 42);
+	border: none;
+	width: 150px;
+  margin-top: 35px;
+}
+
+#newgame {
+  margin: 30px;
+  display: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
 }
