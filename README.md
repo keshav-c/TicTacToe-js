@@ -16,7 +16,7 @@ The game allows two players to enter their names and start playing. It also keep
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Github Pages Link](https://keshav-c.github.io/TicTacToe-js/tictactoe.html)
 
 
 ## Getting Started
