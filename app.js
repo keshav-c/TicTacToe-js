@@ -153,9 +153,11 @@ const controller = ((() => {
 })());
 
 controller.fillBoard();
+
 const gameBoard = document.querySelector('#board-container');
 const newGameBtn = document.querySelector('#newgame');
 const resetBtn = document.querySelector('#reset');
+
 const nextMove = (event) => {
   const element = event.target.closest('div');
   let row;
@@ -170,10 +172,10 @@ const nextMove = (event) => {
     const resultMessage = document.createElement('h2');
     const winner = controller.getWinner();
     if (winner === 'D') {
-      resultMessage.textContent = 'Draw';
+      resultMessage.textContent = 'Draw.';
     } else {
       controller.highlightWinningCells();
-      resultMessage.textContent = `${winner} won the game!`;
+      resultMessage.textContent = `${winner} won!`;
     }
     resultBox.appendChild(resultMessage);
     gameBoard.removeEventListener('click', nextMove);
@@ -186,6 +188,8 @@ const nextMove = (event) => {
 };
 
 gameBoard.addEventListener('click', nextMove);
+
+// eslint-disable-next-line no-unused-vars
 newGameBtn.addEventListener('click', (event) => {
   board.reset();
   controller.fillBoard();
@@ -193,7 +197,12 @@ newGameBtn.addEventListener('click', (event) => {
   const resultBox = document.querySelector('#result');
   const resultMessage = document.querySelector('#result h2');
   resultBox.removeChild(resultMessage);
+  newGameBtn.style.display = 'none';
+  resetBtn.style.display = 'block';
 });
+
+
+// eslint-disable-next-line no-unused-vars
 resetBtn.addEventListener('click', (event) => {
   board.reset();
   controller.fillBoard();
