@@ -42,8 +42,8 @@ To get a local copy up and running follow these simple example steps.
 
 👤 **Keshav Chakravarthy**
 
-    - LinkedIn: [k3shavchakravarthy](https://www.linkedin.com/in/k3shavchakravarthy/)
-    - Github: [@keshav-c](https://github.com/keshav-c)
+- LinkedIn: [k3shavchakravarthy](https://www.linkedin.com/in/k3shavchakravarthy/)
+- Github: [@keshav-c](https://github.com/keshav-c)
 
 👤 **Mbabali Iryn**
 
