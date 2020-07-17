@@ -153,7 +153,7 @@ const controller = ((() => {
         const row = Math.floor(cellNumber / 3) + 1;
         const col = (cellNumber % 3) + 1;
         const cell = document.querySelector(`.r${row}c${col} span`);
-        cell.style.color = 'green';
+        cell.style.color = 'yellow';
       });
     }
   };
