@@ -218,18 +218,6 @@ const newGameBtn = document.querySelector('#newgame');
 const resetBtn = document.querySelector('#reset');
 
 // eslint-disable-next-line no-unused-vars
-newGameBtn.addEventListener('click', (event) => {
-  board.reset();
-  controller.fillBoard();
-  gameBoard.addEventListener('click', nextMove);
-  const resultBox = document.querySelector('#result');
-  const resultMessage = document.querySelector('#result h2');
-  resultBox.removeChild(resultMessage);
-  newGameBtn.style.display = 'none';
-  resetBtn.style.display = 'block';
-});
-
-// eslint-disable-next-line no-unused-vars
 resetBtn.addEventListener('click', (event) => {
   board.reset();
   controller.fillBoard();
@@ -276,6 +264,18 @@ const nextMove = (event) => {
     resetBtn.style.display = 'block';
   }
 };
+
+// eslint-disable-next-line no-unused-vars
+newGameBtn.addEventListener('click', (event) => {
+  board.reset();
+  controller.fillBoard();
+  gameBoard.addEventListener('click', nextMove);
+  const resultBox = document.querySelector('#result');
+  const resultMessage = document.querySelector('#result h2');
+  resultBox.removeChild(resultMessage);
+  newGameBtn.style.display = 'none';
+  resetBtn.style.display = 'block';
+});
 
 gameBoard.addEventListener('click', nextMove);
 
