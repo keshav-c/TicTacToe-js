@@ -4,9 +4,9 @@
 
 > This implements a game of Tic Tac Toe between two human opponents in JavaScript.
 
-![screenshot](./app_screenshot.png)
+![screenshot](./images/tictactoe.png)
 
-The game allows two players to enter their user names and start playing. It also counts the players score.
+The game allows two players to enter their names and start playing. It also keeps count of the players' score.
 
 ## Built With
 
@@ -24,10 +24,6 @@ The game allows two players to enter their user names and start playing. It also
 - clone the repository
 - open `tictactoe.html` in your browser to start the game
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
@@ -36,17 +32,17 @@ To get a local copy up and running follow these simple example steps.
 
 ### Usage
 
-- Enter the two player names
-- click over the board until there is a win
-- click the `new game` button to restart the game
-- click the `reset game` button to reset the ongoing game
+- Enter the players' names to reset their individual score on the scoreboard.
+- Click over the board until there the game ends.
+- Click the `New Game` button to restart the game.
+- Click the `Reset Game` button to wipe the board clean and reset the ongoing game.
 
 
 ## Authors
 
 👤 **Keshav Chakravarthy**
 
-    - [LinkedIn](https://www.linkedin.com/in/k3shavchakravarthy/)
+    - LinkedIn: [k3shavchakravarthy](https://www.linkedin.com/in/k3shavchakravarthy/)
     - Github: [@keshav-c](https://github.com/keshav-c)
 
 👤 **Mbabali Iryn**
@@ -59,7 +55,7 @@ To get a local copy up and running follow these simple example steps.
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/keshav-c/TicTacToe-js/issues).
 
 ## Show your support
 
@@ -67,9 +63,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Odin Project
-- Microverse
+- Odin Project for the problem statement.
+- Microverse for their guidance rubric.
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.
