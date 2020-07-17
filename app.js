@@ -195,8 +195,6 @@ const controller = ((() => {
   const changePlayer = (name, playerNum) => {
     const player = players[playerNum - 1];
     player.resetPlayer(name);
-    // const playerNameElement = document.querySelector(`.player${playerNum}-name h3`);
-    // playerNameElement.textContent = name;
     controller.fillScoreBoard();
   };
 
@@ -215,11 +213,38 @@ const controller = ((() => {
   };
 })());
 
-controller.fillBoard();
-
 const gameBoard = document.querySelector('#board-container');
 const newGameBtn = document.querySelector('#newgame');
 const resetBtn = document.querySelector('#reset');
+
+// eslint-disable-next-line no-unused-vars
+newGameBtn.addEventListener('click', (event) => {
+  board.reset();
+  controller.fillBoard();
+  gameBoard.addEventListener('click', nextMove);
+  const resultBox = document.querySelector('#result');
+  const resultMessage = document.querySelector('#result h2');
+  resultBox.removeChild(resultMessage);
+  newGameBtn.style.display = 'none';
+  resetBtn.style.display = 'block';
+});
+
+// eslint-disable-next-line no-unused-vars
+resetBtn.addEventListener('click', (event) => {
+  board.reset();
+  controller.fillBoard();
+});
+
+const scoreboardNameUpdater = (event) => {
+  const playerNum = Number(event.target.id.match(/\d/));
+  const name = event.target.value;
+  controller.changePlayer(name, playerNum);
+};
+
+const p1Input = document.forms['player-name'].querySelector('#p1');
+p1Input.addEventListener('keyup', scoreboardNameUpdater);
+const p2Input = document.forms['player-name'].querySelector('#p2');
+p2Input.addEventListener('keyup', scoreboardNameUpdater);
 
 const nextMove = (event) => {
   const element = event.target.closest('div');
@@ -254,33 +279,4 @@ const nextMove = (event) => {
 
 gameBoard.addEventListener('click', nextMove);
 
-// eslint-disable-next-line no-unused-vars
-newGameBtn.addEventListener('click', (event) => {
-  board.reset();
-  controller.fillBoard();
-  gameBoard.addEventListener('click', nextMove);
-  const resultBox = document.querySelector('#result');
-  const resultMessage = document.querySelector('#result h2');
-  resultBox.removeChild(resultMessage);
-  newGameBtn.style.display = 'none';
-  resetBtn.style.display = 'block';
-});
-
-
-// eslint-disable-next-line no-unused-vars
-resetBtn.addEventListener('click', (event) => {
-  board.reset();
-  controller.fillBoard();
-});
-
-const scoreboardNameUpdater = (event) => {
-  const playerNum = Number(event.target.id.match(/\d/));
-  const name = event.target.value;
-  controller.changePlayer(name, playerNum);
-};
-
-const p1Input = document.forms['player-name'].querySelector('#p1');
-const p2Input = document.forms['player-name'].querySelector('#p2');
-
-p1Input.addEventListener('keyup', scoreboardNameUpdater);
-p2Input.addEventListener('keyup', scoreboardNameUpdater);
+controller.fillBoard();
