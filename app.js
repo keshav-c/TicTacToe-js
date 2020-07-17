@@ -160,6 +160,8 @@ const nextMove = (event) => {
   col = parseInt(col, 10) - 1;
   board.update(row, col);
   controller.fillBoard();
+  const newGameBtn = document.querySelector('#newgame');
+  const resetBtn = document.querySelector('#reset');
   if (controller.isGameOver()) {
     const resultBox = document.querySelector('#result');
     const resultMessage = document.createElement('h2');
@@ -172,8 +174,13 @@ const nextMove = (event) => {
     }
     resultBox.appendChild(resultMessage);
     gameBoard.removeEventListener('click', nextMove);
+    if (winner === 'D' || controller ) {
+      newGameBtn.style.display = 'block';
+    }
+    resetBtn.style.display = 'none';
+  } else {
+    newGameBtn.style.display = 'none';
   }
 };
-
 
 gameBoard.addEventListener('click', nextMove);
