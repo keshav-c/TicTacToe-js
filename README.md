@@ -6,13 +6,13 @@
 
 ![screenshot](./app_screenshot.png)
 
-Additional description about the project and its features.
+The game allows two players to enter their user names and start playing. It also counts the players score.
 
 ## Built With
 
-- Major languages,
-- frameworks,
-- technologies used
+- JavaScript
+- CSS
+- HTML
 
 ## Live Demo
 
@@ -20,6 +20,9 @@ Additional description about the project and its features.
 
 
 ## Getting Started
+
+- clone the repository
+- open `tictactoe.html` in your browser to start the game
 
 **This is an example of how you may give instructions on setting up your project locally.**
 **Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
@@ -29,31 +32,28 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-### Setup
-
-### Install
+- Tested in Chrome, Firefox and Microsoft Edge. 
 
 ### Usage
 
-### Run tests
-
-### Deployment
-
+- Enter the two player names
+- click over the board until there is a win
+- click the `new game` button to restart the game
+- click the `reset game` button to reset the ongoing game
 
 
 ## Authors
 
-👤 **Author1**
+👤 **Keshav Chakravarthy**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+    - [LinkedIn](https://www.linkedin.com/in/k3shavchakravarthy/)
+    - Github: [@keshav-c](https://github.com/keshav-c)
 
-👤 **Author2**
+👤 **Mbabali Iryn**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [@mbabaliiryn](https://github.com/mbabaliiryn)
+- Twitter: [@irynmbabali](https://twitter.com/irynmbabali)
+- Linkedln: [mbabaliiryn](https://www.linkedin.com/in/mbabaliiryn)
 
 ## 🤝 Contributing
 
@@ -67,9 +67,8 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Odin Project
+- Microverse
 
 ## 📝 License
 
