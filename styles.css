@@ -1,0 +1,119 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Player Name Form */
+
+#player-name {
+  width: 600px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+input[type=text] {
+  padding: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+#p2 {
+  margin-left: 30px;
+}
+
+/* Board */
+
+#board-container {
+  background-color: black;
+  width: 540px;
+  max-width: 600px;
+  height: 360px;
+  max-height: 420px;
+  margin: 0 auto;
+  display: grid;
+  row-gap: 3px;
+  column-gap: 3px;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cell {
+  background-color: rgb(180, 72, 184);
+  display: flex;
+  justify-content: center;
+}
+
+.cell span {
+  font-size: 4em;
+  align-self: center;
+}
+
+/* new/reset buttons */
+
+.button-container button {
+  font-size: 1.3rem;
+  margin: 0 auto;
+  background-color: rgb(42, 240, 42);
+  border: none;
+  width: 150px;
+  margin-top: 35px;
+  padding: 12px 20px;
+}
+
+#newgame {
+  margin: 30px;
+  display: none;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Game result display */
+
+#result {
+  display: flex;
+  justify-content: center;
+}
+
+/* Score board */
+
+.score-board {
+  display: grid;
+  width: 600px;
+  height: 210px;
+  margin: 30px auto;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 2px;
+  column-gap: 2px;
+  border: 2px solid black;
+  background-color: black;
+}
+
+.score-board div {
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+}
+
+.board-title {
+  background-color: aqua;
+  grid-column: 1 / -1;
+}
+
+.player1-name {
+  background-color: rgba(218, 8, 8, 0.534);
+}
+
+.player2-name {
+  background-color: rgba(172, 255, 47, 0.678);
+}
+
+.player1-score,
+.player2-score {
+  background-color: antiquewhite;
+}
