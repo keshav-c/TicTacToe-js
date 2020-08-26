@@ -5,6 +5,10 @@ const board = ((() => {
     state = ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
   };
 
+  const setState = (newState) => {
+    state = newState;
+  };
+
   const isPositionEmpty = (index) => state[index] !== 'X' && state[index] !== 'O';
 
   const nextSymbol = () => {
@@ -91,7 +95,12 @@ const board = ((() => {
   const getState = () => state;
 
   return {
-    getState, update, nextSymbol, getWinner, reset,
+    getState,
+    setState,
+    update,
+    nextSymbol,
+    getWinner,
+    reset,
   };
 })());
 
