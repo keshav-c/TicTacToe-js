@@ -4,62 +4,64 @@
 
 > This implements a game of Tic Tac Toe between two human opponents in JavaScript.
 
-![screenshot](./app_screenshot.png)
+![screenshot](./images/tictactoe.png)
 
-Additional description about the project and its features.
+The game allows two players to enter their names and start playing. It also keeps count of the players' score.
 
 ## Built With
 
-- Major languages,
-- frameworks,
-- technologies used
+- JavaScript
+- CSS
+- HTML
+- Webpack
+- Jest
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Github Pages Link](https://keshav-c.github.io/TicTacToe-js/tictactoe.html)
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
+
+- clone the repository
+- open `tictactoe.html` in your browser to start the game
+
+### Run Unit Tests
+
+`npm run test`
 
 ### Prerequisites
 
-### Setup
-
-### Install
+- Tested in Chrome, Firefox and Microsoft Edge. 
 
 ### Usage
 
-### Run tests
-
-### Deployment
-
+- Enter the players' names to reset their individual score on the scoreboard.
+- Click over the board until there the game ends.
+- Click the `New Game` button to restart the game.
+- Click the `Reset Game` button to wipe the board clean and reset the ongoing game.
 
 
 ## Authors
 
-👤 **Author1**
+👤 **Keshav Chakravarthy**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- LinkedIn: [k3shavchakravarthy](https://www.linkedin.com/in/k3shavchakravarthy/)
+- Github: [@keshav-c](https://github.com/keshav-c)
 
-👤 **Author2**
+👤 **Mbabali Iryn**
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [@mbabaliiryn](https://github.com/mbabaliiryn)
+- Twitter: [@irynmbabali](https://twitter.com/irynmbabali)
+- Linkedln: [mbabaliiryn](https://www.linkedin.com/in/mbabaliiryn)
 
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/keshav-c/TicTacToe-js/issues).
 
 ## Show your support
 
@@ -67,10 +69,9 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Odin Project for the problem statement.
+- Microverse for their guidance rubric.
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.
