@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server --open",
-    "test": "jest",
+    "test": "jest --verbose",
     "lint": "eslint . && stylelint '**/*.{css,scss}'",
     "build": "webpack"
   },
