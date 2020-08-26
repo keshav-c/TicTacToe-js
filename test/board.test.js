@@ -1,4 +1,4 @@
-import board from './board';
+import board from '../src/board';
 
 it('The board is initially clear', () => {
   const emptyBoard = JSON.stringify(['_', '_', '_', '_', '_', '_', '_', '_', '_']);

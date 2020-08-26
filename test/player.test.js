@@ -1,4 +1,4 @@
-import newPlayer from './player';
+import newPlayer from '../src/player';
 
 it('Creates new player with name and score 0', () => {
   const player = newPlayer('player1', 1);
