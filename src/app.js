@@ -1,3 +1,5 @@
+import './styles.css';
+
 /* eslint-disable prefer-destructuring */
 const board = ((() => {
   let state = ['_', '_', '_', '_', '_', '_', '_', '_', '_'];
