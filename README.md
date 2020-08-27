@@ -13,6 +13,8 @@ The game allows two players to enter their names and start playing. It also keep
 - JavaScript
 - CSS
 - HTML
+- Webpack
+- Jest
 
 ## Live Demo
 
@@ -21,10 +23,14 @@ The game allows two players to enter their names and start playing. It also keep
 
 ## Getting Started
 
+To get a local copy up and running follow these simple example steps.
+
 - clone the repository
 - open `tictactoe.html` in your browser to start the game
 
-To get a local copy up and running follow these simple example steps.
+### Run Unit Tests
+
+`npm run test`
 
 ### Prerequisites
 
