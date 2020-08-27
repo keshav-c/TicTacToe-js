@@ -6,6 +6,18 @@ const controller = ((() => {
   let winningSequence;
   const players = [newPlayerInstance('Player 1', 1), newPlayerInstance('Player 2', 2)];
 
+  const getPlayerInfo = () => (
+    {
+      player1: {
+        name: players[0].getName(),
+        score: players[0].getScore(),
+      },
+      player2: {
+        name: players[1].getName(),
+        score: players[1].getScore(),
+      },
+    });
+
   const fillBoard = () => {
     let row = 0;
     let col = 0;
@@ -85,6 +97,7 @@ const controller = ((() => {
     isGameOver,
     getWinner,
     getWinningSequence,
+    getPlayerInfo,
     highlightWinningCells,
     changePlayer,
     fillScoreBoard,
